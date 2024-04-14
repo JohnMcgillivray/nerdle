@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <!-- Htmx -->
+    <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="header">
+        <h1>{{ title }}</h1>
+    </div>
+
+
+    <div id="game" class="game">
+        {% include 'game.html' %}
+    </div>
+
+    <style>
+        .letter {
+            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 2rem;
+            justify-content: center;
+            align-items: center;
+            margin: 2px;
+        }
+
+        @keyframes fadein {
+            from { opacity: 0}
+            to   { opacity: 1}
+        }
+
+        .guesses {
+            display: grid;
+            justify-content: center;
+        }
+
+        .guess_form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .header {
+            overflow: hidden;
+            background-color: #A79277;
+            height: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.6rem;
+        }
+
+        body {
+            background-color: #D1BB9E;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #FFF2E1;
+        }
+    </style>
+
+    
+</body>
+</html>

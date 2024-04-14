@@ -1,0 +1,7 @@
+<div id="guesses" class="guesses"></div>
+
+<div id="guess_form" class="guess_form">
+    <form hx-post="/guess" hx-target="#guesses" hx-swap="beforeend" hx-on::after-request="this.reset()">
+        <input type="text" name="guess" placeholder="guess" style="font-size: larger;">
+    </form>
+</div>
