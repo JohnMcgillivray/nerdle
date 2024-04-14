@@ -17,6 +17,7 @@ def turd():
     session.clear()
     return render_template("home.html", title="💩 Turdle 💩")
 
+
 @app.get("/new_game/")
 def new_game():
     session.clear()
@@ -45,7 +46,7 @@ def guess_turd():
             color.append("green")
 
     if turd.status == "guessed":
-        return render_template("word_guessed.html",letters=guess, colors=color)
+        return render_template("word_guessed.html", letters=guess, colors=color)
 
     session["words"] = words
 
