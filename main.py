@@ -9,7 +9,7 @@ app.secret_key = b"wawawewa"
 
 @app.get("/")
 def read_root():
-    return render_template("home.html", title="home")
+    return "Hello, World!"
 
 
 @app.get("/turdle/")
@@ -29,6 +29,9 @@ def guess_turd():
     words = []
     if session.get("words"):
         words = session["words"]
+
+    if len(request.form["guess"]) != 5:
+        return ""
 
     guess = request.form["guess"]
     guess = guess.lower()
