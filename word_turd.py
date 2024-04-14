@@ -34,7 +34,6 @@ class Turdle:
             self.status = "guessed"
 
         words = match_groups[best_pattern]
-        print(words)
         return best_pattern, words
 
     def _find_matches(self, guess, word):
