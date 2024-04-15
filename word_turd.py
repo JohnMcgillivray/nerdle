@@ -9,7 +9,7 @@ class Turdle:
         self.WORD_LIST = [word.strip() for word in self.WORD_LIST]
         self.status = "playing"
 
-    def guess(self, guess: str, words: list[str]) -> str:
+    def guess(self, guess: str, words: list[str]) -> tuple[str, list[str]]:
         if len(guess) != 5:
             raise ValueError("Guess must be a 5-letter word!")
 
@@ -51,24 +51,25 @@ class Turdle:
 def main():
 
     turd = Turdle()
-    turd.new_game()
+    words = []
 
-    while True:
+    while turd.status == "playing":
         guess = ""
         while len(guess) != 5:
             guess = input("Please enter a 5-letter word! ")
 
-        print(turd.guess(guess))
+        res, words = turd.guess(guess, words)
+        print(res)
 
         if turd.status == "playing":
-            print(f"Words left: {len(turd.words)}")
-            if len(turd.words) < 30:
-                print("Words left: ", turd.words)
+            print(f"Words left: {len(words)}")
+            if len(words) < 30:
+                print("Words left: ", words)
 
-        if turd.status == "guessed":
-            print("You guessed the word!")
-            turd.new_game()
-            print("Starting new game...\n")
+    print("You guessed the word!")
+
+    if input("Play again? (y/n) ").lower() in ["y", "yes"]:
+        main()
 
 
 if __name__ == "__main__":
