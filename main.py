@@ -15,7 +15,7 @@ def read_root():
 @app.get("/turdle/")
 def turd():
     session.clear()
-    return render_template("home.html", title="💩 Turdle 💩")
+    return render_template("home.html")
 
 
 @app.get("/new_game/")
