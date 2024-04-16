@@ -15,7 +15,7 @@ def read_root():
 @app.get("/turdle/")
 def turd():
     session.clear()
-    return render_template("home.html")
+    return render_template("home.html.j2")
 
 
 @app.get("/new_game/")
@@ -49,8 +49,8 @@ def guess_turd():
             color.append("green")
 
     if turd.status == "guessed":
-        return render_template("word_guessed.html", letters=guess, colors=color)
+        return render_template("word_guessed.html.j2", letters=guess, colors=color)
 
     session["words"] = words
 
-    return render_template("word.html", letters=guess, colors=color)
+    return render_template("word.html.j2", letters=guess, colors=color)

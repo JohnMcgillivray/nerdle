@@ -1,9 +1,9 @@
 <div>
-{% for i in range(5)%}
+    {% for i in range(5)%}
 
-<div class="letter" style="background-color: {{colors[i]}}; animation: fadein {{0.2 * (i+1)}}s;">
-    {{ letters[i] }}
-</div>
+    <div class="letter" style="background-color: {{colors[i]}}; animation: fadein {{0.2 * (i+1)}}s;">
+        {{ letters[i] }}
+    </div>
 
-{% endfor %}
+    {% endfor %}
 </div>
