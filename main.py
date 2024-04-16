@@ -87,8 +87,8 @@ def guess_turd():
         flavor_text = "If this was Wordle, you'd be out of guesses. 🤡🤡🤡"
     elif len(words) == len_words_before:
         flavor_text = "Nice work, bozo. " + flavor_text + ".. still"
-        if len_words_before == 1:
-            dumbass = True
+        # if len_words_before == 1:
+        #     dumbass = True
     elif len(words) == 69:
         flavor_text += " Nice."
 
