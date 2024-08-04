@@ -4,7 +4,7 @@ from flask import Flask, request, render_template, session
 from word_turd import Turdle
 
 app = Flask(__name__)
-app.secret_key = b"wawawewa"
+app.secret_key = b"wawawewa"  
 
 
 @app.get("/")
