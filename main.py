@@ -9,7 +9,7 @@ app.secret_key = b"wawawewa"
 
 @app.get("/")
 def read_root():
-    return "Hello, World!"
+    return "<a href=/turdle> try a game</a>"
 
 
 @app.get("/turdle/")
