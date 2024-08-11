@@ -1,6 +1,6 @@
 <div id="guesses" class="guesses"></div>
 
-<div id="flavor_text" class="flavor_text">Guess any word. The computer will choose whatever word makes your guesses least helpful.</div>
+<div id="flavor_text" class="flavor_text">Guess any 5 letter word. The computer will choose whatever word makes your guesses least helpful.</div>
 
 <div id="guess_form" class="guess_form">
     <form hx-post="/guess" hx-target="#guesses" hx-swap="beforeend" hx-on::after-request="this.reset()">
