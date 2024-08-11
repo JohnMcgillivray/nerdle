@@ -9,10 +9,10 @@ app.secret_key = b"wawawewa"
 
 @app.get("/")
 def read_root():
-    return "<a href=/turdle> try a game</a>"
+    return "<a href=/nerdle> try a game</a>"
 
 
-@app.get("/turdle/")
+@app.get("/nerdle/")
 def turd():
     session.clear()
     return render_template("home.html.j2")
@@ -26,7 +26,7 @@ def new_game():
 
 
 @app.post("/guess/")
-def guess_turd():
+def guess_word():
 
     if not session.get("words"):
         session["words"] = []
@@ -48,7 +48,7 @@ def guess_turd():
     color = []
     for x in answer:
         if x == "-":
-            color.append("rgb(234, 216, 192)")
+            color.append("rgb(57, 62, 70)")
         elif x == "+":
             color.append("rgb(255, 165, 0)")
         else:
@@ -56,7 +56,6 @@ def guess_turd():
 
     session["guesses"] += 1
 
-    dumbass = False
 
     if turd.status == "guessed":
         flavor_text = f"You guessed the word in {session['guesses']} tries. "
@@ -76,7 +75,7 @@ def guess_turd():
                 flavor_text += "🤡🤡🤡"
 
         return render_template(
-            "word_guessed.html.j2", letters=guess, colors=color, flavor_text=flavor_text, dumbass=dumbass
+            "word_guessed.html.j2", letters=guess, colors=color, flavor_text=flavor_text
         )
 
     session["words"] = words
@@ -87,12 +86,10 @@ def guess_turd():
         flavor_text = "If this was Wordle, you'd be out of guesses. 🤡🤡🤡"
     elif len(words) == len_words_before:
         flavor_text = "Nice work, bozo. " + flavor_text + ".. still"
-        # if len_words_before == 1:
-        #     dumbass = True
     elif len(words) == 69:
         flavor_text += " Nice."
 
 
     return render_template(
-        "word.html.j2", letters=guess, colors=color, flavor_text=flavor_text,dumbass=dumbass
+        "word.html.j2", letters=guess, colors=color, flavor_text=flavor_text
     )
