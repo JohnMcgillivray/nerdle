@@ -15,6 +15,10 @@ class Nerdle:
 
         guess = guess.lower()
 
+        # maybe validate guess is in word list?
+        # might make game too furstrating though
+        # not adding for now
+
         match_groups = {}
 
         if not words:

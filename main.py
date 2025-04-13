@@ -4,6 +4,7 @@ from flask import Flask, request, render_template, session
 from word_nerd import Nerdle 
 
 app = Flask(__name__)
+# bad, but I'm not storing any data and I don't care if someone cheats ¯\_(ツ)_/¯
 app.secret_key = b"wawawewa"  
 
 
@@ -32,6 +33,7 @@ def guess_word():
         session["words"] = []
         session["guesses"] = 0
 
+    # don't really feel like setting up a db, just shove everything in the cookie
     words = session["words"]
 
     if len(request.form["guess"]) != 5:
@@ -43,6 +45,7 @@ def guess_word():
     len_words_before = len(words)
 
     nerd = Nerdle()
+    # works for now, but should probably refactor to split TUI stuff out from game logic
     answer, words = nerd.guess(guess, words)
 
     color = []
