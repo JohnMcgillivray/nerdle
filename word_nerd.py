@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-class Turdle:
+class Nerdle:
 
     def __init__(self) -> None:
         with open("wordle.txt") as f:
@@ -73,18 +73,18 @@ class Turdle:
 
 def main():
 
-    turd = Turdle()
+    nerd = Nerdle()
     words = []
 
-    while turd.status == "playing":
+    while nerd.status == "playing":
         guess = ""
         while len(guess) != 5:
             guess = input("Please enter a 5-letter word! ")
 
-        res, words = turd.guess(guess, words)
+        res, words = nerd.guess(guess, words)
         print(res)
 
-        if turd.status == "playing":
+        if nerd.status == "playing":
             print(f"Words left: {len(words)}")
             if len(words) < 30:
                 print("Words left: ", words)

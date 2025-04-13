@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, session
 
 
-from word_turd import Turdle
+from word_nerd import Nerdle 
 
 app = Flask(__name__)
 app.secret_key = b"wawawewa"  
@@ -13,7 +13,7 @@ def read_root():
 
 
 @app.get("/nerdle/")
-def turd():
+def nerd():
     session.clear()
     return render_template("home.html.j2")
 
@@ -42,8 +42,8 @@ def guess_word():
 
     len_words_before = len(words)
 
-    turd = Turdle()
-    answer, words = turd.guess(guess, words)
+    nerd = Nerdle()
+    answer, words = nerd.guess(guess, words)
 
     color = []
     for x in answer:
@@ -57,7 +57,7 @@ def guess_word():
     session["guesses"] += 1
 
 
-    if turd.status == "guessed":
+    if nerd.status == "guessed":
         flavor_text = f"You guessed the word in {session['guesses']} tries. "
 
         match session["guesses"]:
