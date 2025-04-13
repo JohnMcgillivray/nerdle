@@ -36,13 +36,36 @@ class Turdle:
         words = match_groups[best_pattern]
         return best_pattern, words
 
-    def _find_matches(self, guess, word):
+    def _find_matches(self, guess : str, word : str):
         match_string = ""
         for i in range(5):
             if guess[i] == word[i]:
                 match_string += guess[i]
             elif guess[i] in word:
-                match_string += "+"
+                amount_in_word = word.count(guess[i])
+                amount_in_guess = guess.count(guess[i])
+                if amount_in_word >= amount_in_guess:
+                    # has at least as many occurences as guess, can be yellow
+                    match_string += "+"
+                else:
+                    amount_correct_in_guess = 0
+                    for j in range(5):
+                        if guess[j] == guess[i] and guess[j] == word[j]:
+                            amount_correct_in_guess += 1
+                    if amount_correct_in_guess == amount_in_word:
+                        # all occurences correctly guessed, show all additional as wrong
+                        match_string += "-"
+                    else:
+                        # only show yellow for first (amount in word - amount correct in guess)
+                        amount_to_show_yellow = amount_in_word - amount_correct_in_guess
+                        amount_yellow = 0
+                        for j in range(i):
+                            if guess[j] == guess[i] and guess[j] != word[j]:
+                                amount_yellow += 1
+                        if amount_yellow < amount_to_show_yellow:
+                            match_string += "+"
+                        else:
+                            match_string += "-"
             else:
                 match_string += "-"
         return match_string
