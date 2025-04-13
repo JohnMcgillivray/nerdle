@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 
 class Nerdle:
 
@@ -76,6 +77,10 @@ class Nerdle:
 
 
 def main():
+    easy_mode = False
+    for arg in sys.argv[1:]:
+        if arg == "--easy-mode":
+            easy_mode = True;
 
     nerd = Nerdle()
     words = []
@@ -90,7 +95,7 @@ def main():
 
         if nerd.status == "playing":
             print(f"Words left: {len(words)}")
-            if len(words) < 30:
+            if easy_mode and len(words) < 30:
                 print("Words left: ", words)
 
     print("You guessed the word!")
